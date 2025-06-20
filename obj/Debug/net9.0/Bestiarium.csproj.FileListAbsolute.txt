@@ -1,0 +1,15 @@
+d:\VSC\Projekty\Bestiarium\bin\Debug\net9.0\Bestiarium.exe
+d:\VSC\Projekty\Bestiarium\bin\Debug\net9.0\Bestiarium.deps.json
+d:\VSC\Projekty\Bestiarium\bin\Debug\net9.0\Bestiarium.runtimeconfig.json
+d:\VSC\Projekty\Bestiarium\bin\Debug\net9.0\Bestiarium.dll
+d:\VSC\Projekty\Bestiarium\bin\Debug\net9.0\Bestiarium.pdb
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.GeneratedMSBuildEditorConfig.editorconfig
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.AssemblyInfoInputs.cache
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.AssemblyInfo.cs
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.csproj.CoreCompileInputs.cache
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.sourcelink.json
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.dll
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\refint\Bestiarium.dll
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.pdb
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\Bestiarium.genruntimeconfig.cache
+d:\VSC\Projekty\Bestiarium\obj\Debug\net9.0\ref\Bestiarium.dll

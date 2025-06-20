@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj": {}
+    "d:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj": {}
   },
   "projects": {
-    "D:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj": {
+    "d:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj",
+        "projectUniqueName": "d:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj",
         "projectName": "Bestiarium",
-        "projectPath": "D:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj",
+        "projectPath": "d:\\VSC\\Projekty\\Bestiarium\\Bestiarium.csproj",
         "packagesPath": "C:\\Users\\zaran\\.nuget\\packages\\",
-        "outputPath": "D:\\VSC\\Projekty\\Bestiarium\\obj\\",
+        "outputPath": "d:\\VSC\\Projekty\\Bestiarium\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\zaran\\AppData\\Roaming\\NuGet\\NuGet.Config"
