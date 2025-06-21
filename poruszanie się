@@ -1,0 +1,36 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    public float moveSpeed = 5f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        // Odczyt klawiszy
+        movement.x = Input.GetAxisRaw("Horizontal"); // A/D lub strzałki
+        movement.y = Input.GetAxisRaw("Vertical");   // W/S lub strzałki
+        movement.Normalize(); // Zapobiega szybszemu chodzeniu na ukos
+    }
+
+    void FixedUpdate()
+    {
+        // Przesunięcie z kolizją
+        Vector2 newPos = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
+
+        // Przesuwamy tylko, jeśli nie wpadniemy na coś
+        RaycastHit2D hit = Physics2D.BoxCast(rb.position, rb.GetComponent<BoxCollider2D>().size, 0f, movement, moveSpeed * Time.fixedDeltaTime);
+        
+        if (hit.collider == null)
+        {
+            rb.MovePosition(newPos);
+        }
+    }
+}
+
