@@ -1,21 +1,55 @@
-﻿
-
-string[] level = {      // Plansza, jeszcze nie wiem jak zrobić ją losowo
+﻿string[] level = {
     "###########",
-    "#      #   #",
-    "#   #      #",
-    "#   #      #",
+    "#      #  #",
+    "#   #     #",
+    "#   #     #",
     "###########"
 };
 
-Console.Clear(); // UWAGA MOKRA PODŁOGA (TU SIĘ SPRZĄTA!!!!)
+int playerX = 1;
+int playerY = 1;
 
-foreach (string row in level)       // Tutaj wyświetlamy tablice
+Console.CursorVisible = false;
+
+while (true)
 {
-    Console.WriteLine(row);
+    Console.Clear();
+    DrawLevel();
+
+    ConsoleKey key = Console.ReadKey(true).Key;
+
+    int newX = playerX;
+    int newY = playerY;
+
+    switch (key)
+    {
+        case ConsoleKey.W: newY--; break;
+        case ConsoleKey.S: newY++; break;
+        case ConsoleKey.A: newX--; break;
+        case ConsoleKey.D: newX++; break;
+        case ConsoleKey.Escape: return;
+    }
+
+    if (level[newY][newX] != '#')
+    {
+        playerX = newX;
+        playerY = newY;
+    }
 }
 
-while (true)            //To jest nieskończona pętla tylko po to żeby termninal mi nie znikał, bo inaczej znika mi zanim nawet wyświetli plansze i dupa
+void DrawLevel()
 {
-    Console.ReadLine();
+    for (int y = 0; y < level.Length; y++)
+    {
+        for (int x = 0; x < level[y].Length; x++)
+        {
+            if (x == playerX && y == playerY)
+                Console.Write('@');
+            else
+                Console.Write(level[y][x]);
+        }
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
 }
