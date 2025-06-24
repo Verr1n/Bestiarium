@@ -6,6 +6,10 @@
     "###########"
 };
 
+NPC npc = new NPC(5, 3);
+
+
+
 int playerX = 1;
 int playerY = 1;
 
@@ -35,21 +39,47 @@ while (true)
         playerX = newX;
         playerY = newY;
     }
-}
 
+
+    npc.Move(level);
+
+    if (Math.Abs(playerX - npc.X) + Math.Abs(playerY - npc.Y) == 1)
+    {
+        bool passed = NPC.Interact();
+        if (passed)
+        {
+            Console.WriteLine("Good Job");
+            Console.ReadKey();
+            return;
+        }
+        else
+        {
+            Console.WriteLine("L");
+            Console.ReadKey();
+        }
+    }
+}
 void DrawLevel()
 {
     for (int y = 0; y < level.Length; y++)
     {
         for (int x = 0; x < level[y].Length; x++)
         {
-            if (x == playerX && y == playerY)
-                Console.Write('@');
+            if (x == playerX && y == playerY && x == npc.X && y == npc.Y)
+                Console.Write('&'); // specjalny znak, np. że są na tym samym polu
+            else if (x == playerX && y == playerY)
+                 Console.Write('@');
+            else if (x == npc.X && y == npc.Y)
+                 Console.Write('N');
             else
                 Console.Write(level[y][x]);
+
         }
         Console.WriteLine();
     }
 
     Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
 }
+
+
+

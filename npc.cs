@@ -35,7 +35,7 @@ public class NPC
         }
     }
 
-    public bool Interact()
+    public static bool Interact()
     {
         Console.Clear();
         Console.WriteLine("NPC: Chcesz się zmierzyć w papier-kamień-nożyce?");
