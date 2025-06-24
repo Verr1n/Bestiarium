@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bestiarium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d04ee17dfe2e6a48ad06bacee67364a5345e47f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bae90db2e6d208e2371a04179d852e3679757ee1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bestiarium")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bestiarium")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
