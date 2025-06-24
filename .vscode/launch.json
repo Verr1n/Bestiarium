@@ -5,20 +5,20 @@
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
-            "name": "Bestiarium",
+            "name": "Bestiarium: Launch",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Klawiatury/bin/Debug/net8.0/Klawiatury.dll",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/Bestiarium.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Klawiatury",
+            "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "externalTerminal"
             
         },
         {
-            "name": "Bestiarium",
+            "name": "Bestiarium: Attach",
             "type": "coreclr",
             "request": "attach"
         }
