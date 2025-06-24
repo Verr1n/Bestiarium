@@ -42,41 +42,45 @@ public class NPC
         Console.WriteLine("Masz 3 próby. Wygraj przynajmniej raz, by przejść dalej!");
         Console.WriteLine("Wpisz: papier / kamień / nożyce");
 
-        string[] opcje = { "papier", "kamień", "nożyce" };
-        int próby = 3;
-        bool wygrana = false;
+        string[] options = { "papier", "kamień", "nożyce" };
+        int trials = 3;
+        bool winning = false;
 
-        while (próby-- > 0)
+        while (trials > 0)
         {
             Console.Write("\n🫵 Twój wybór: ");
-            string gracz = Console.ReadLine()?.ToLower() ?? "";
-        if (Array.IndexOf(opcje, gracz) == -1)
+            string person = Console.ReadLine()?.ToLower() ?? "";
+
+        if (Array.IndexOf(options, person) == -1)
             {
                 Console.WriteLine("Nie ma takiego wyboru w podstawowej wersji papier kamień nożyce");
-                continue; // Nie zmniejszamy liczby prób – pytamy ponownie
+                continue;
             }
-            string npc = opcje[new Random().Next(3)];
+
+            string npc = options[new Random().Next(3)];
 
             Console.WriteLine($"NPC wybrał: {npc}");
 
-            if (gracz == npc)
+            if (person == npc)
             {
                 Console.WriteLine("🔁 Remis!");
+                continue;
             }
-            else if ((gracz == "papier" && npc == "kamień") ||
-                     (gracz == "kamień" && npc == "nożyce") ||
-                     (gracz == "nożyce" && npc == "papier"))
+            if ((person == "papier" && npc == "kamień") ||
+               (person == "kamień" && npc == "nożyce") ||
+               (person == "nożyce" && npc == "papier"))
             {
                 Console.WriteLine("Wygrałeś!");
-                wygrana = true;
+                winning = true;
                 break;
             }
             else
             {
                 Console.WriteLine("Przegrałeś tę rundę.");
+                trials--;
             }
         }
 
-        return wygrana;
+        return winning;
     }
 }
