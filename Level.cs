@@ -11,22 +11,15 @@ namespace Bestiarium
             Map = map;
         }
         
-        public char GetTitle(int x, int y)
+        public char GetTile(int x, int y)
         {
-
             return Map[y][x];
         }
 
         public bool IsWalkable(int x, int y)
         {
-
-            return Mapy[y][x] != "#";
+            
+            return Map[y][x] != '#';
         }
     }
 }
-
-        
-    
-
-
-
