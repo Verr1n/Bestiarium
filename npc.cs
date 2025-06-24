@@ -50,6 +50,11 @@ public class NPC
         {
             Console.Write("\n🫵 Twój wybór: ");
             string gracz = Console.ReadLine()?.ToLower() ?? "";
+        if (Array.IndexOf(opcje, gracz) == -1)
+            {
+                Console.WriteLine("Nie ma takiego wyboru w podstawowej wersji papier kamień nożyce");
+                continue; // Nie zmniejszamy liczby prób – pytamy ponownie
+            }
             string npc = opcje[new Random().Next(3)];
 
             Console.WriteLine($"NPC wybrał: {npc}");
