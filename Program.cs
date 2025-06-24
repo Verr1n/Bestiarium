@@ -8,8 +8,6 @@
 
 NPC npc = new NPC(5, 3);
 
-
-
 int playerX = 1;
 int playerY = 1;
 
@@ -34,7 +32,7 @@ while (true)
         case ConsoleKey.Escape: return;
     }
 
-    if (level[newY][newX] != '#')
+    if (level[newY][newX] != '#')   // kod na kolizje
     {
         playerX = newX;
         playerY = newY;
@@ -43,7 +41,7 @@ while (true)
 
     npc.Move(level);
 
-    if (Math.Abs(playerX - npc.X) + Math.Abs(playerY - npc.Y) == 1)
+    if (playerX == npc.X && playerY == npc.Y)
     {
         bool passed = NPC.Interact();
         if (passed)
@@ -68,9 +66,9 @@ void DrawLevel()
             if (x == playerX && y == playerY && x == npc.X && y == npc.Y)
                 Console.Write('&'); // specjalny znak, np. że są na tym samym polu
             else if (x == playerX && y == playerY)
-                 Console.Write('@');
+                Console.Write('@');
             else if (x == npc.X && y == npc.Y)
-                 Console.Write('N');
+                Console.Write('N');
             else
                 Console.Write(level[y][x]);
 
@@ -79,6 +77,7 @@ void DrawLevel()
     }
 
     Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
+    Console.WriteLine("& - oznacza gracza oraz NPC na tym samym polu");
 }
 
 
