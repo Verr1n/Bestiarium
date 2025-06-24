@@ -1,11 +1,8 @@
-﻿string[] level = {
-    "###########",
-    "#      #  #",
-    "#   #     #",
-    "#   #     #",
-    "###########"
-};
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
+<<<<<<< HEAD
 NPC npc = new NPC(5, 3);
 
 int playerX = 1;
@@ -14,24 +11,27 @@ int playerY = 1;
 Console.CursorVisible = false;
 
 while (true)
+=======
+/// Wszystkie klasy w projekcie Bestiarium umieszczamy w tej przestrzeni nazw,
+/// aby grupować kod, unikać konfliktów nazw i ułatwić wzajemne odwołania.
+// Cały ten plik należy do przestrzeni nazw Bestiarium
+namespace Bestiarium
+>>>>>>> cb72cdea6ae8ef81e4be2ce2cdbc238d59f039bb
 {
-    Console.Clear();
-    DrawLevel();
 
-    ConsoleKey key = Console.ReadKey(true).Key;
-
-    int newX = playerX;
-    int newY = playerY;
-
-    switch (key)
+ class Program
+ {
+    static void Main()
     {
-        case ConsoleKey.W: newY--; break;
-        case ConsoleKey.S: newY++; break;
-        case ConsoleKey.A: newX--; break;
-        case ConsoleKey.D: newX++; break;
-        case ConsoleKey.Escape: return;
-    }
+        string[] levelMap = {
+            "###########",
+            "#      #  #",
+            "#   #     #",
+            "#   #     #",
+            "###########"
+        };
 
+<<<<<<< HEAD
     if (level[newY][newX] != '#')   // kod na kolizje
     {
         playerX = newX;
@@ -72,13 +72,75 @@ void DrawLevel()
             else
                 Console.Write(level[y][x]);
 
+=======
+        var bindings = new Dictionary<ConsoleKey, string>
+        {
+            { ConsoleKey.W, "up" },
+            { ConsoleKey.S, "down" },
+            { ConsoleKey.A, "left" },
+            { ConsoleKey.D, "right" }
+        };
+
+        var levelObj = new Level(levelMap);
+
+        int playerX = 1, playerY = 1;
+        Console.CursorVisible = false;
+
+        var player = new PlayerG(
+            name: "SkutyG",
+            avatar: "&",
+            position: new Point(playerX, playerY),
+            level: levelObj,
+            keyActionMap: bindings,
+            health: 21,
+            speed: 12
+        );
+
+        while (true)
+        {
+            Console.Clear();
+            DrawLevel(levelMap, player.Position.X, player.Position.Y, player.Avatar);
+
+            var key = Console.ReadKey(true).Key;
+            if (key == ConsoleKey.Escape) break;
+
+            Point movement = key switch
+            {
+                ConsoleKey.W => new Point(0, -1),
+                ConsoleKey.S => new Point(0, +1),
+                ConsoleKey.A => new Point(-1, 0),
+                ConsoleKey.D => new Point(+1, 0),
+                _ => new Point(0, 0)
+            };
+
+            var newPos = new Point(player.Position.X + movement.X, player.Position.Y + movement.Y);
+            if (levelMap[newPos.Y][newPos.X] != '#')
+                player.Move(movement);
+
+            Console.SetCursorPosition(0, levelMap.Length + 1);
+            Console.Write($"Zdrowie: {player.Health} | Prędkość: {player.Speed}");
+>>>>>>> cb72cdea6ae8ef81e4be2ce2cdbc238d59f039bb
         }
-        Console.WriteLine();
     }
 
+<<<<<<< HEAD
     Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
     Console.WriteLine("& - oznacza gracza oraz NPC na tym samym polu");
 }
 
 
 
+=======
+    static void DrawLevel(string[] map, int px, int py, string avatar)
+    {
+        for (int y = 0; y < map.Length; y++)
+        {
+            for (int x = 0; x < map[y].Length; x++)
+                Console.Write(x == px && y == py ? avatar : map[y][x]);
+            Console.WriteLine();
+        }
+        Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
+    }
+ } 
+}
+>>>>>>> cb72cdea6ae8ef81e4be2ce2cdbc238d59f039bb

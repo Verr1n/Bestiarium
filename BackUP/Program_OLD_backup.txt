@@ -1,0 +1,155 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
+
+/// Wszystkie klasy w projekcie Bestiarium umieszczamy w tej przestrzeni nazw,
+/// aby grupować kod, unikać konfliktów nazw i ułatwić wzajemne odwołania.
+// File-scoped namespace 
+namespace Bestiarium;
+
+string[] levelMap = {
+    "###########",
+    "#      #  #",
+    "#   #     #",
+    "#   #     #",
+    "###########"
+};
+
+// najpierw slownik :3
+var bindings = new Dictionary<ConsoleKey, string>
+{
+    { ConsoleKey.W, "up" },
+    { ConsoleKey.S, "down" },
+    { ConsoleKey.A, "left" },
+    { ConsoleKey.D, "right" }
+};
+
+//utwórz obiekt level
+var levelObj = new Level(LevelMap);
+
+//pozycja startowa 
+int playerX = 1, playerY = 1;
+
+Console.CursorVisible = false;
+
+// teraz konstruktora PlayerG wywołujemy raz, przed pętlą
+var player = new PlayerG(
+    name: "skutyG",
+    avatar: "&"
+    position: new Point(playerX, playerY),
+    Level: levelObj,
+    keyActionMap: bindings,
+    health: 21,
+    speed: 12
+);
+
+while (true)
+{
+    Console.Clear();
+    DrawLevel();
+
+ConsoleKey key = Console.ReadKey(true).Key;
+Point movement = key switch
+{
+ConsoleKey.W => new Point(0, -1),
+ConsoleKey.S => new Point(0, +1),
+ConsoleKey.A => new Point(-1, 0),
+ConsoleKey.D => new Point(+1, 0),
+ConsoleKey.Escape => break,
+        _ => new Point(0, 0)
+        };
+        
+     // sprawdź kolizje w Level zamiast bezpośrednio w tablicy
+     var newPos = new Point(playerX + movement.X, playerY + movement.Y);
+     if (levelMap[newPos.Y][newPos.X] != '#')
+     {
+        playerX = newPos.X;
+        playerY = newPos.Y;
+        player.Move(movement);
+     }
+
+    // Wyświetl statystyki
+    Console.SetCursorPosition(0, levelMap.Length + 2);
+    Console.WriteLine($"Zdrowie: {player.Health} | Prędkość: {player.Speed}");
+}
+
+void DrawLevel()
+{
+    for (int y = 0; y < levelMap.Length; y++)
+    {
+        for (int x = 0; x < levelMap[y].Length; x++)
+        {
+            Console.Write(x == playerX && y == playerY ? player.Avatar : levelMap[y][x]);
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
+}
+
+
+int playerX = 1;
+int playerY = 1;
+
+Console.CursorVisible = false;
+
+while (true)
+{
+    Console.Clear();
+    DrawLevel();
+
+    ConsoleKey key = Console.ReadKey(true).Key;
+
+    int newX = playerX;
+    int newY = playerY;
+
+    switch (key)
+    {
+        case ConsoleKey.W: newY--; break;
+        case ConsoleKey.S: newY++; break;
+        case ConsoleKey.A: newX--; break;
+        case ConsoleKey.D: newX++; break;
+        case ConsoleKey.Escape: return;
+    }
+
+    //Postać ,,skutygoblix''  21hp, speed; 12
+
+     var Player1 = new PlayerG("skutyG", "&", new Point(1, 1), level, Bindings, 21, 12);
+    var Bindings = new Dictionary<ConsoleKey, string>
+     {
+        { ConsoleKey.W, "up" },
+        { ConsoleKey.S, "down" },
+        { ConsoleKey.A, "left" },
+        { ConsoleKey.D, "right" }
+     };
+    Console.WriteLine($"Zdrowie: {Player1.Health}");
+    Console.WriteLine($"Prędkość: {Player1.Speed}");
+
+    Level someLevel = new PlayerG("SkutyG", "&", new Point(1, 1), null, Bindings, 21, 12);
+
+
+    if (level[newY][newX] != '#')
+    {
+        playerX = newX;
+        playerY = newY;
+    }
+}
+
+void DrawLevel()
+{
+    for (int y = 0; y < level.Length; y++)
+    {
+        for (int x = 0; x < level[y].Length; x++)
+        {
+            if (x == playerX && y == playerY)
+                Console.Write('@');
+            else
+                Console.Write(level[y][x]);
+        }
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("\nSterowanie: W A S D | ESC = Wyjście");
+}
